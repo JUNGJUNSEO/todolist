@@ -1,0 +1,78 @@
+.calender {
+  padding-top: 40px;
+  width: 30%;
+
+  background-color: white;
+}
+.calender__top {
+  font-weight: 600;
+  width: 100%;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  font-size: 17px;
+}
+.calender__top i {
+  padding-right: 10px;
+  color: var(--red);
+}
+.calender__down {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.calender-header {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calender-header__year {
+  /* font-family: inherit; */
+  font-size: 15px;
+  width: 35px;
+  text-align: center;
+}
+.calender-header__month {
+  border: white;
+  background-color: white;
+  font-family: inherit;
+  font-size: 25px;
+  font-weight: 600;
+}
+.calender-header__left,
+.calender-header__right {
+  cursor: pointer;
+}
+
+.tb_thead tr td {
+  font-weight: bold;
+  text-align: center;
+  padding: 3px;
+}
+
+.sunday {
+  color: var(--red);
+}
+.saturday {
+  color: var(--blue);
+}
+.insidetd {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.insidetd div {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+.active:hover {
+  background: var(--backgroundcolor);
+  cursor: pointer;
+}

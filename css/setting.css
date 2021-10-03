@@ -1,0 +1,15 @@
+.fa-spinner {
+  color: #9e9d99;
+}
+.fa-check {
+  color: #ed7072;
+}
+.fa-arrow-right {
+  color: #7811fe;
+}
+.fa-edit {
+  color: #035a37;
+}
+.fa-trash {
+  color: var(--yellow);
+}

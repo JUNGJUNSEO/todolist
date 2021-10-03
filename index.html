@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Planner</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="navigation">
+      <div class="navigation__header">
+        <i class="fab fa-dailymotion fa-2x"></i>
+        <span>데일리 플래너</span>
+      </div>
+
+      <ul>
+        <li class="navigation__list">
+          <div>
+            <span class="navigation__icon"
+              ><i class="far fa-calendar-alt"></i
+            ></span>
+            <span class="navigation__title">달력</span>
+          </div>
+        </li>
+        <li class="navigation__list">
+          <div>
+            <span class="navigation__icon"
+              ><i class="far fa-calendar-check"></i
+            ></span>
+            <span class="navigation__title">투 두 리스트</span>
+          </div>
+        </li>
+        <li class="navigation__list">
+          <div>
+            <span class="navigation__icon"
+              ><i class="far fa-calendar-minus"></i
+            ></span>
+            <span class="navigation__title">NOT 투 두 리스트</span>
+          </div>
+        </li>
+        <li class="navigation__list">
+          <div>
+            <span class="navigation__icon"
+              ><i class="fas fa-sliders-h"></i
+            ></span>
+            <span class="navigation__title">하루 작은 습관</span>
+          </div>
+        </li>
+        <li class="navigation__list">
+          <div>
+            <span class="navigation__icon"
+              ><i class="fas fa-crosshairs"></i
+            ></span>
+            <span class="navigation__title">목표</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <main class="main-screen">
+      <div class="todo">
+        <div class="todo__header">
+          <div class="todo__day"><span></span></div>
+          <div class="todo__date"><span></span><span></span></div>
+        </div>
+        <div class="todo__box1">
+          <table class="todo__table">
+            <thead class="todo__head">
+              <tr>
+                <th></th>
+                <th>
+                  <div class="todo__order">
+                    <button>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <span>정렬</span>
+                  </div>
+                </th>
+                <th>해야 할 일</th>
+                <th>진행 상태</th>
+              </tr>
+            </thead>
+            <tbody class="todo__body"></tbody>
+          </table>
+          <button class="todo__popup">
+            <div><i class="fas fa-plus"></i><span> 추가</span></div>
+          </button>
+        </div>
+      </div>
+    </main>
+    <div class="calender">
+      <div class="calender__top">
+        <i class="far fa-calendar-alt"></i><span>투 두 달력</span>
+      </div>
+      <div class="calender__down">
+        <div class="calender-header">
+          <div class="calender-header__left">
+            <i class="fas fa-chevron-left fa-lg"></i>
+          </div>
+          <div class="calender-header__middle">
+            <input type="number" class="calender-header__year" value="2020" />
+            <select class="calender-header__month">
+              <option value="1">01월</option>
+              <option value="2">02월</option>
+              <option value="3">03월</option>
+              <option value="4">04월</option>
+              <option value="5">05월</option>
+              <option value="6">06월</option>
+              <option value="7">07월</option>
+              <option value="8">08월</option>
+              <option value="9">09월</option>
+              <option value="10">10월</option>
+              <option value="11">11월</option>
+              <option value="12">12월</option>
+            </select>
+          </div>
+          <div class="calender-header__right">
+            <i class="fas fa-chevron-right fa-lg"></i>
+          </div>
+        </div>
+        <table class="tb">
+          <thead class="tb_thead">
+            <tr>
+              <td class="sunday">일</td>
+              <td>월</td>
+              <td>화</td>
+              <td>수</td>
+              <td>목</td>
+              <td>금</td>
+              <td class="saturday">토</td>
+            </tr>
+          </thead>
+          <tbody class="tb_tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="popup hidden">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <div class="popup__header">
+          <span>할 일 추가</span>
+          <button class="popup__close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="popup__body">
+          <form class="todo__form">
+            <div>
+              <input
+                type="text"
+                placeholder="할 일을 추가하고 enter를 눌러주세요."
+                required
+              />
+            </div>
+
+            <div class="popup__priority">
+              <div>
+                <i class="fas fa-arrow-circle-up fa-lg"></i><span>중요도</span>
+              </div>
+              <div>
+                <select class="todo__importance" required>
+                  <option value="" disabled selected hidden>ABC</option>
+                  <option value="A0">A0</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="B0">B0</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                  <option value="C0">C0</option>
+                  <option value="C1">C1</option>
+                  <option value="C2">C2</option>
+                </select>
+              </div>
+            </div>
+            <textarea class="todo__detail" placeholder="세부 일정"></textarea>
+            <button class="todo__button">추가</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="edit edit__hidden">
+      <div class="edit__overlay"></div>
+      <div class="edit__content">
+        <div class="edit__header">
+          <div>
+            <span>할 일 수정</span>
+            <button class="edit__close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="edit__body">
+          <form class="edit__form">
+            <div>
+              <input type="text" required />
+            </div>
+
+            <div class="edit__priority">
+              <div>
+                <i class="fas fa-arrow-circle-up fa-lg"></i><span>중요도</span>
+              </div>
+              <div>
+                <select class="edit__importance" required>
+                  <option
+                    value=""
+                    selected
+                    hidden
+                    class="edit__option"
+                  ></option>
+                  <option value="A0">A0</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="B0">B0</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                  <option value="C0">C0</option>
+                  <option value="C1">C1</option>
+                  <option value="C2">C2</option>
+                </select>
+              </div>
+            </div>
+            <textarea class="edit__detail" placeholder="세부 일정"></textarea>
+            <button class="edit__button">수정</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="delay delay__hidden">
+      <div class="delay__overlay"></div>
+      <div class="delay__content">
+        <div class="delay__header">
+          <span>할 일 연기</span>
+          <button class="delay__close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="delay__body">
+          <form class="delay__form">
+            <div>
+              <i class="far fa-calendar-alt fa-lg"></i><input type="date" />
+              <span>로 연기</span>
+            </div>
+            <button class="delay__button">연기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="content content__hidden">
+      <div class="content__overlay"></div>
+      <div class="content__content">
+        <div class="content__header">
+          <button class="content__close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="content__body">
+          <input class="content__title" type="text" disabled />
+          <textarea
+            class="content__detail"
+            placeholder="세부 일정"
+            disabled
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/calender.js"></script>
+  <!-- <script src="js/clock.js"></script> -->
+  <!-- <script src="js/quotes.js"></script> -->
+
+  <!-- <script src="js/background.js"></script> -->
+  <script src="js/todo.js"></script>
+  <script src="js/add.js"></script>
+  <script src="js/delay.js"></script>
+  <script src="js/sort.js"></script>
+  <script
+    src="https://kit.fontawesome.com/6433d8ce23.js"
+    crossorigin="anonymous"
+  ></script>
+</html>

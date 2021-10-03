@@ -1,0 +1,118 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hidden {
+  display: none;
+}
+.popup__overlay {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.popup__content {
+  width: 400px;
+  height: 450px;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  position: absolute;
+}
+.popup__header {
+  height: 8%;
+  padding: 5px 10px;
+  background-color: rgba(245, 245, 245, 0.4);
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup__body {
+  height: 92%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.todo__form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.todo__form div:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo__form div input {
+  width: 100%;
+  font-family: inherit;
+  border: white;
+}
+.todo__form div:first-child input {
+  font-size: 20px;
+
+  background-color: white;
+  border-bottom: 3px solid #7811fe;
+}
+
+.popup__priority {
+  width: 100%;
+  font-size: 18px;
+  margin-top: 50px;
+  display: flex;
+}
+.popup__priority div:first-child {
+  width: 30%;
+}
+.popup__priority div:first-child span {
+  margin-left: 10px;
+}
+.popup__priority div:last-child {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+.fa-arrow-circle-up {
+  color: #7811fe;
+}
+.todo__importance {
+  text-align: center;
+  height: 30px;
+  width: 70px;
+  font-size: inherit;
+  border-bottom: 3px solid #7811fe;
+}
+.todo__importance:hover {
+  border-bottom: none;
+}
+.todo__detail {
+  font-size: 15px;
+  margin-top: 20px;
+  background-color: var(--backgroundcolor);
+  width: 100%;
+  height: 150px;
+}
+.todo__button {
+  cursor: pointer;
+  font-size: 20px;
+  background-color: #7811fe;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  width: 70px;
+  height: 40px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

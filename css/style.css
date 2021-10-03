@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+@import "reset.css";
+@import "setting.css";
+@import "add.css";
+@import "edit.css";
+@import "calender.css";
+@import "bar.css";
+@import "main.css";
+@import "variables.css";
+@import "delay.css";
+@import "content.css";
+body {
+  min-height: 100vh;
+  font-family: "Gowun Dodum", sans-serif;
+  display: flex;
+  width: 100%;
+}
