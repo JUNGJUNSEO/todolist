@@ -1,8 +1,11 @@
 .navigation {
   position: relative;
+  /* 15% */
   width: 15%;
   background-color: var(--backgroundcolor);
   color: rgba(0, 0, 0, 0.7);
+  /* transition: width 0.5s;
+  overflow-x: hidden; */
   /* box-shadow: 3px 0 5px rgba(0, 0, 0, 0.22); */
 }
 
@@ -29,6 +32,7 @@
   padding-left: 30px;
   list-style: none;
   width: 100%;
+  /* width: 200px; */
   box-sizing: border-box;
   cursor: pointer;
   font-size: 15px;
@@ -38,11 +42,11 @@
   align-items: center;
 }
 
-.navigation__list:nth-child(2) .navigation__title {
+.navigation__active .navigation__title {
   color: black;
   font-weight: 600;
 }
-.navigation__list:nth-child(2) .navigation__icon {
+.navigation__active .navigation__icon {
   color: var(--blue);
   font-weight: 600;
 }

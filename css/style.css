@@ -15,3 +15,14 @@ body {
   display: flex;
   width: 100%;
 }
+@media screen and (max-width: 1040px) {
+  .navigation {
+    width: 5%;
+  }
+  .main-screen {
+    width: 95%;
+  }
+  .calender {
+    display: none;
+  }
+}

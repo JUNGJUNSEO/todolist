@@ -1,7 +1,6 @@
 .calender {
   padding-top: 40px;
   width: 30%;
-
   background-color: white;
 }
 .calender__top {
@@ -46,13 +45,20 @@
 .calender-header__right {
   cursor: pointer;
 }
-
-.tb_thead tr td {
+.tb {
+  table-layout: fixed;
+  width: 80%;
+}
+.tb_thead tr {
+  width: 100%;
+}
+.tb_thead tr th {
   font-weight: bold;
   text-align: center;
-  padding: 3px;
 }
-
+/* .tb_tbody td {
+  overflow: hidden;
+} */
 .sunday {
   color: var(--red);
 }

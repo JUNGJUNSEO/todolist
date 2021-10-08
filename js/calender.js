@@ -49,6 +49,7 @@ function changeYearMonth(year,month){
 function renderCalender(date){
     for(let i=0 ; i<6 ; i++){
         const tr = document.createElement("tr")
+        tr.classList = "calendar-body-tr"
         tBody.appendChild(tr)
         for(let j=i*7 ; j<(i+1)*7 ; j++){
             if (j >= date.length){
@@ -75,10 +76,12 @@ function renderCalender(date){
             const savedToDos = localStorage.getItem(newDate);
             if (savedToDos !== null) {
                 const parsedToDos = JSON.parse(savedToDos);
+                let calendarDate = document.querySelector(`.set_${date[j]}`)
                 for(let i=0 ; i<parsedToDos.length ; i++){
                     if (parsedToDos[i].color == ''){
-                       document.querySelector(`.set_${date[j]} div div`).style.backgroundColor = "var(--red)"
+                       document.querySelector(`.set_${date[j]} div div`).style.backgroundColor = "var(--red)"    
                     }
+                    calendarDate.innerHTML += `<div class="hidden-contents" style="display: none; justify-content: left; align-items: center; font-size: 12px; margin-bottom: 8px; width:100%"><div style="width: 5px; height: 5px; border-radius: 50%; background:${parsedToDos[i].color}; margin-right:5px;"></div><span>${parsedToDos[i].text}</span></div>`
                 }
             }
             td.addEventListener("click",setDate)
@@ -146,6 +149,7 @@ function setColor(day){
     //지정된 날짜의 스타일을 변경.
 
     const today = document.querySelector(`.set_${day} div`)
+    console.log(today)
     today.style.background = "var(--yellow)"
     today.style.borderRadius ="50%"
     today.style.color = "#ffffff"
