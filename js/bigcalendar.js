@@ -1,29 +1,45 @@
-const mainScreen = document.querySelector(".main-screen")
-const calender = document.querySelector(".calender")
 const calendarHead = document.querySelector(".calender__top")
-const calendarBody = document.querySelector(".calender__down")
-const insideTd = document.querySelector(".insidetd")
-const table = document.querySelector(".tb")
-const hiddenContents = document.querySelectorAll(".hidden-contents")
-// const tableDate = document.querySelectorAll(".tb_tbody tr td")
-const tableBodyRow = document.querySelectorAll(".calendar-body-tr")
 
-calendarHead.addEventListener("click",() => {
+function bigCalendar(){
+    const mainScreen = document.querySelector(".main-screen")
+    const calender = document.querySelector(".calender")
+    const calendarBody = document.querySelector(".calender__down")
+
+    const table = document.querySelector(".tb")
+
+    const tableDate = document.querySelectorAll(".tb_tbody td")
+    console.log(tableDate)
+    const tableDateDiv = document.querySelectorAll(".tb_tbody td > div")
+    const insideTd = document.querySelector(".insidetd")
+    const insideDiv = document.querySelectorAll(".insidetd div")
+    const hiddenContents = document.querySelectorAll(".hidden-contents")
+
+
+    const complete = document.querySelectorAll(".complete")
+    const tdBox = document.querySelectorAll(".tdbox")
+
     mainScreen.style.display = "none"
     calender.style.width = "85%"
-    calender.style.height = "100%"
-    calender.style.padding = 0
-
+    calender.style.padding = "15px"
+    
     calendarHead.style.display = "none"
-    
-    calendarBody.style.height = "100%"
-
     table.style.width = "100%"
-    table.style.height = "1000px"
-    
+    for (let i=0; i<tableDate.length; i++){
+        
+        tableDate[i].style.height =  "180px"
+        tableDateDiv[i].style.maxHeight =  "180px"
+        tableDate[i].style.borderTop = "2px solid var(--backgroundcolor)"
+    }
+    for (let i=0; i<insideDiv.length; i++){
+        insideDiv[i].style.display = "none"
+    }
     for (let i=0; i<hiddenContents.length; i++){
         hiddenContents[i].style.display = "flex"
     }
-    
+    for (let i=0; i<complete.length; i++){
+        tdBox[i].style.position = "absolute";
+        complete[i].style.display = "flex"
+    }
 
-})
+}
+calendarHead.addEventListener("click", bigCalendar)

@@ -49,43 +49,55 @@ function changeYearMonth(year,month){
 function renderCalender(date){
     for(let i=0 ; i<6 ; i++){
         const tr = document.createElement("tr")
-        tr.classList = "calendar-body-tr"
         tBody.appendChild(tr)
         for(let j=i*7 ; j<(i+1)*7 ; j++){
             if (j >= date.length){
                 break
             }
             const td = document.createElement("td")
-            td.innerHTML = `<div class="insidetd"><span>${date[j]}</span><div></div></div>`
+            const div = document.createElement("div")
             tr.appendChild(td)
+            td.appendChild(div)
             if (date[j] == ""){
                 continue
+            }else{
+                div.insertAdjacentHTML("beforeend","<div>"+`<div class="insidetd"><span>${date[j]}</span><div></div></div>`)
             }
             td.classList = "active"
 
             // 일요일이면 빨간색 토요일이면 파란색으로 설정.
             const newDate = new Date(current_year,current_month-1,date[j]);
+            const numDate = td.querySelector(".insidetd")
             if(newDate.getDay()==0){
-                td.classList.add("sunday")
+                numDate.style.color = "var(--red)"
             }else if(newDate.getDay()==6){
-                td.classList.add("saturday")
+                numDate.style.color = "var(--blue)"
             }
             td.classList.add(`set_${date[j]}`)
             
-            // 일정이 있는 경우 숫자 밑에 빨간색 점을 표시.
+            // 일정이 있는 경우 숫자 밑에 빨간색 점과 그 일정을 표시.
             const savedToDos = localStorage.getItem(newDate);
+            let checkComplete = true
             if (savedToDos !== null) {
                 const parsedToDos = JSON.parse(savedToDos);
-                let calendarDate = document.querySelector(`.set_${date[j]}`)
                 for(let i=0 ; i<parsedToDos.length ; i++){
                     if (parsedToDos[i].color == ''){
-                       document.querySelector(`.set_${date[j]} div div`).style.backgroundColor = "var(--red)"    
+                       document.querySelector(`.set_${date[j]} > div > div:nth-child(1) > div > div`).style.backgroundColor = "var(--red)"    
                     }
-                    calendarDate.innerHTML += `<div class="hidden-contents" style="display: none; justify-content: left; align-items: center; font-size: 12px; margin-bottom: 8px; width:100%"><div style="width: 5px; height: 5px; border-radius: 50%; background:${parsedToDos[i].color}; margin-right:5px;"></div><span>${parsedToDos[i].text}</span></div>`
+                    if (parsedToDos[i].color != "#ed7072"){
+                        checkComplete = false    
+                    }
+                    div.insertAdjacentHTML("beforeend", `<div class="hidden-contents"><span>${parsedToDos[i].text}</span></div>`)
+                }
+                if (checkComplete){
+                    div.classList = "tdbox"
+                    td.insertAdjacentHTML("beforeend", '<div class="complete"><i style = "color: rgba(0,0,0,0.5);"  class="far fa-check-circle fa-4x"></i><span class="complete__word">complete!<span></div>')
                 }
             }
-            td.addEventListener("click",setDate)
+            div.insertAdjacentHTML("beforeend", "</div>")
             
+            
+            td.addEventListener("click",setDate)
         }
 
     }
@@ -148,8 +160,7 @@ function deleteToDos(){
 function setColor(day){
     //지정된 날짜의 스타일을 변경.
 
-    const today = document.querySelector(`.set_${day} div`)
-    console.log(today)
+    const today = document.querySelector(`.set_${day} div div:first-child div`)
     today.style.background = "var(--yellow)"
     today.style.borderRadius ="50%"
     today.style.color = "#ffffff"
@@ -157,7 +168,7 @@ function setColor(day){
 function removeColor(day){
     //이전에 지정 된 날짜의 스타일을 지워줌.
 
-    const today = document.querySelector(`.set_${day} div`)
+    const today = document.querySelector(`.set_${day} div div:first-child div`)
     today.style.removeProperty("background")
     today.style.removeProperty("borderRadius")
     today.style.removeProperty("color")
@@ -167,7 +178,8 @@ function setDate(event){
     // 달력의 날짜 Click시 to do list에 그 날의 할 일을 표시
 
     removeColor(current_day)
-    current_day = event.currentTarget.textContent
+    current_day = event.currentTarget.firstChild.innerText
+    console.log(current_day)
     setColor(current_day)
     TODOS_KEY = new Date(current_year,current_month-1,current_day);
     toDos = []

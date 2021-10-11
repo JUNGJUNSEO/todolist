@@ -47,7 +47,6 @@
 }
 .tb {
   table-layout: fixed;
-  width: 80%;
 }
 .tb_thead tr {
   width: 100%;
@@ -56,15 +55,10 @@
   font-weight: bold;
   text-align: center;
 }
-/* .tb_tbody td {
-  overflow: hidden;
+/* .tb_tbody td > div {
+  background-color: red;
 } */
-.sunday {
-  color: var(--red);
-}
-.saturday {
-  color: var(--blue);
-}
+
 .insidetd {
   width: 50px;
   height: 50px;
@@ -78,7 +72,32 @@
   height: 5px;
   border-radius: 50%;
 }
+.hidden-contents {
+  display: none;
+  justify-content: left;
+  font-size: 12px;
+  padding: 8px 0 0 0;
+}
 .active:hover {
   background: var(--backgroundcolor);
   cursor: pointer;
+}
+.tdbox {
+  width: calc(85% / 7);
+}
+.complete {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: inherit;
+  width: calc(85% / 7);
+  background-color: var(--backgroundcolor);
+  opacity: 0.5;
+}
+.complete__word {
+  font-size: 20px;
+  color: var(--green);
+  font-weight: 1000;
 }
