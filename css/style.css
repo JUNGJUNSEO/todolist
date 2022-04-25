@@ -4,23 +4,22 @@
 @import "add.css";
 @import "edit.css";
 @import "calender.css";
-@import "bar.css";
 @import "main.css";
 @import "variables.css";
 @import "delay.css";
 @import "content.css";
 body {
   min-height: 100vh;
+  min-width: 1040px;
   font-family: "Gowun Dodum", sans-serif;
   display: flex;
+  justify-content: center;
   width: 100%;
 }
+
 @media screen and (max-width: 1040px) {
-  .navigation {
-    width: 5%;
-  }
   .main-screen {
-    width: 95%;
+    width: 100%;
   }
   .calender {
     display: none;

@@ -1,6 +1,10 @@
 const calendarHead = document.querySelector(".calender__top")
+const leftArrow = document.querySelector(".calender-header__left")
+const rightArrow = document.querySelector(".calender-header__right")
 
 function bigCalendar(){
+
+    check = true
     const mainScreen = document.querySelector(".main-screen")
     const calender = document.querySelector(".calender")
     const table = document.querySelector(".tb")
@@ -37,5 +41,9 @@ function bigCalendar(){
         complete[i].style.display = "flex"
     }
 
+    leftArrow.addEventListener("click", bigCalendar);
+    rightArrow.addEventListener("click", bigCalendar);
+    
 }
-calendarHead.addEventListener("click", bigCalendar)
+calendarHead.addEventListener("click", bigCalendar);
+

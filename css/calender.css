@@ -1,10 +1,9 @@
 .calender {
-  padding-top: 40px;
+  padding-top: 85px;
   width: 30%;
   background-color: white;
 }
 .calender__top {
-  font-weight: 600;
   width: 100%;
   padding-left: 50px;
   padding-bottom: 20px;
@@ -13,7 +12,7 @@
 }
 .calender__top i {
   padding-right: 10px;
-  color: var(--red);
+  color: var(--green);
 }
 .calender__down {
   width: 100%;
@@ -45,20 +44,19 @@
 .calender-header__right {
   cursor: pointer;
 }
-.tb {
-  table-layout: fixed;
-}
-.tb_thead tr {
-  width: 100%;
-}
-.tb_thead tr th {
+
+.tb_thead tr td {
   font-weight: bold;
   text-align: center;
+  padding: 3px;
 }
-/* .tb_tbody td > div {
-  background-color: red;
-} */
 
+.sunday {
+  color: var(--red);
+}
+.saturday {
+  color: var(--blue);
+}
 .insidetd {
   width: 50px;
   height: 50px;
@@ -72,32 +70,7 @@
   height: 5px;
   border-radius: 50%;
 }
-.hidden-contents {
-  display: none;
-  justify-content: left;
-  font-size: 12px;
-  padding: 8px 0 0 0;
-}
 .active:hover {
   background: var(--backgroundcolor);
   cursor: pointer;
-}
-.tdbox {
-  width: calc(85% / 7);
-}
-.complete {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  height: inherit;
-  width: calc(85% / 7);
-  background-color: var(--backgroundcolor);
-  opacity: 0.5;
-}
-.complete__word {
-  font-size: 20px;
-  color: var(--green);
-  font-weight: 1000;
 }
