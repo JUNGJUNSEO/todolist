@@ -3,14 +3,10 @@ const calendarHead = document.querySelector(".calender__top")
 function bigCalendar(){
     const mainScreen = document.querySelector(".main-screen")
     const calender = document.querySelector(".calender")
-    const calendarBody = document.querySelector(".calender__down")
-
     const table = document.querySelector(".tb")
 
     const tableDate = document.querySelectorAll(".tb_tbody td")
-    console.log(tableDate)
     const tableDateDiv = document.querySelectorAll(".tb_tbody td > div")
-    const insideTd = document.querySelector(".insidetd")
     const insideDiv = document.querySelectorAll(".insidetd div")
     const hiddenContents = document.querySelectorAll(".hidden-contents")
 
