@@ -44,7 +44,9 @@
 .calender-header__right {
   cursor: pointer;
 }
-
+.tb {
+  table-layout: fixed;
+}
 .tb_thead tr td {
   font-weight: bold;
   text-align: center;
@@ -70,7 +72,42 @@
   height: 5px;
   border-radius: 50%;
 }
+.active{
+  position: relative;
+}
+
 .active:hover {
   background: var(--backgroundcolor);
   cursor: pointer;
+}
+
+.hidden-contents {
+  display: none;
+  flex-direction: column
+}
+.hidden-contents span {
+  margin: 5px 5px 0px 5px;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+.complete {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: rgba(0 ,0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  
+}
+.complete__word {
+  padding-top: 5px;
+  font-size: 20px;
+  font-weight: 600;
 }

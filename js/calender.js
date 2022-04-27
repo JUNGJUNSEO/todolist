@@ -55,7 +55,12 @@ function renderCalender(date){
                 break
             }
             const td = document.createElement("td")
-            td.innerHTML = `<div class="insidetd"><span>${date[j]}</span><div></div></div>`
+            td.innerHTML = `<div class="insidetd">
+                                <span>${date[j]}</span>
+                                <div class="dot_${date[j]}"></div>
+                            </div>
+                            <div class="hidden-contents todos_${date[j]}">
+                            </div>`
             tr.appendChild(td)
             if (date[j] == ""){
                 continue
@@ -73,12 +78,26 @@ function renderCalender(date){
             
             // 일정이 있는 경우 숫자 밑에 빨간색 점을 표시.
             const savedToDos = localStorage.getItem(newDate);
+            let checkComplete = true;
+
             if (savedToDos !== null) {
                 const parsedToDos = JSON.parse(savedToDos);
+                console.log(parsedToDos)
                 for(let i=0 ; i<parsedToDos.length ; i++){
                     if (parsedToDos[i].color == ''){
-                       document.querySelector(`.set_${date[j]} div div`).style.backgroundColor = "var(--red)"
+                       document.querySelector(`.dot_${date[j]}`).style.backgroundColor = "var(--red)"
                     }
+                    if (parsedToDos[i].color != "#ed7072"){
+                        checkComplete = false    
+                    }
+                    document.querySelector(`.todos_${date[j]}`).insertAdjacentHTML("beforeend", `<span>${parsedToDos[i].text}</span>`)
+                }
+                if (checkComplete){
+                    td.insertAdjacentHTML("beforeend", 
+                        `<div class="complete">
+                            <i class="far fa-check-circle fa-4x"></i>
+                            <span class="complete__word">complete!<span>
+                        </div>`)
                 }
             }
             td.addEventListener("click",setDate)
@@ -163,7 +182,7 @@ function setDate(event){
     // 달력의 날짜 Click시 to do list에 그 날의 할 일을 표시
 
     removeColor(current_day)
-    current_day = event.currentTarget.textContent
+    current_day = event.currentTarget.innerText
     setColor(current_day)
     TODOS_KEY = new Date(current_year,current_month-1,current_day);
     toDos = []
@@ -195,6 +214,11 @@ let toDos = [];
 
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+    console.log(TODOS_KEY,toDos)
+    // 빈 배열 일 때 삭제
+    if (toDos.length === 0){
+        localStorage.removeItem(TODOS_KEY);
+    }
 }
 
 function deleteToDo(event) {

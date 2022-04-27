@@ -16,7 +16,7 @@ function bigCalendar(){
 
 
     const complete = document.querySelectorAll(".complete")
-    const tdBox = document.querySelectorAll(".tdbox")
+    // const tdBox = document.querySelectorAll(".tdbox")
 
     mainScreen.style.display = "none"
     calender.style.width = "85%"
@@ -37,7 +37,7 @@ function bigCalendar(){
         hiddenContents[i].style.display = "flex"
     }
     for (let i=0; i<complete.length; i++){
-        tdBox[i].style.position = "absolute";
+        // tdBox[i].style.position = "absolute";
         complete[i].style.display = "flex"
     }
 
