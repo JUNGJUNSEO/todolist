@@ -10,7 +10,7 @@
 @import "content.css";
 body {
   min-height: 100vh;
-  min-width: 1040px;
+  min-width: 100vh;
   font-family: "Gowun Dodum", sans-serif;
   display: flex;
   justify-content: center;

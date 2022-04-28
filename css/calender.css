@@ -5,14 +5,26 @@
 }
 .calender__top {
   width: 100%;
-  padding-left: 50px;
+  padding-left: 70px;
   padding-bottom: 20px;
   box-sizing: border-box;
   font-size: 17px;
+  cursor: pointer;
 }
 .calender__top i {
   padding-right: 10px;
   color: var(--green);
+}
+.calender__button{
+  width: 100px;
+  height: 30px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.calender__button:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .calender__down {
   width: 100%;
@@ -45,6 +57,7 @@
   cursor: pointer;
 }
 .tb {
+  width: auto;
   table-layout: fixed;
 }
 .tb_thead tr td {
@@ -83,13 +96,15 @@
 
 .hidden-contents {
   display: none;
-  flex-direction: column
+  flex-direction: column;
+
 }
 .hidden-contents span {
   margin: 5px 5px 0px 5px;
   white-space: nowrap;
   overflow: hidden; 
   text-overflow: ellipsis;
+  color: black;
 }
 .complete {
   width: 100%;
@@ -103,11 +118,22 @@
   top: 50%;
   transform: translate(-50%,-50%);
   background-color: rgba(0 ,0, 0, 0.2);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.2);
+  text-shadow:
+        0 0 4px  white,
+        0 0 12px white,
+        0 0 15px white,
+        0 0 38px white,
+        0 0 73px white,
+        0 0 80px white,
+        0 0 94px white,
+        0 0 160px white;
   
 }
 .complete__word {
   padding-top: 5px;
   font-size: 20px;
   font-weight: 600;
+  text-shadow: none;
+  color: var(--green);
 }

@@ -82,15 +82,19 @@ function renderCalender(date){
 
             if (savedToDos !== null) {
                 const parsedToDos = JSON.parse(savedToDos);
-                console.log(parsedToDos)
                 for(let i=0 ; i<parsedToDos.length ; i++){
-                    if (parsedToDos[i].color == ''){
+                    let color = parsedToDos[i].color
+                    if (color == ''){
                        document.querySelector(`.dot_${date[j]}`).style.backgroundColor = "var(--red)"
                     }
-                    if (parsedToDos[i].color != "#ed7072"){
+                    if (color != "#ed7072"){
                         checkComplete = false    
                     }
-                    document.querySelector(`.todos_${date[j]}`).insertAdjacentHTML("beforeend", `<span>${parsedToDos[i].text}</span>`)
+                    if (color != "#7811fe"){
+                        document.querySelector(`.todos_${date[j]}`).insertAdjacentHTML("beforeend", `<span>${parsedToDos[i].text}</span>`)
+                    }
+
+                    
                 }
                 if (checkComplete){
                     td.insertAdjacentHTML("beforeend", 
@@ -178,9 +182,13 @@ function removeColor(day){
     today.style.removeProperty("color")
 
 }
+let big = false
 function setDate(event){
     // 달력의 날짜 Click시 to do list에 그 날의 할 일을 표시
 
+    if (big === true){
+        originCalender()
+    }
     removeColor(current_day)
     current_day = event.currentTarget.innerText
     setColor(current_day)
@@ -188,6 +196,8 @@ function setDate(event){
     toDos = []
     deleteToDos()
     reCallToDos(TODOS_KEY)
+
+    
 }
 
 const date = new Date();
@@ -214,7 +224,6 @@ let toDos = [];
 
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-    console.log(TODOS_KEY,toDos)
     // 빈 배열 일 때 삭제
     if (toDos.length === 0){
         localStorage.removeItem(TODOS_KEY);
@@ -262,7 +271,6 @@ function stateToDo(curState){
 }
 function processToDo(event){
     const curState = event.currentTarget
-    console.log(curState)
     stateToDo(curState)
 }
 function completeToDo(event){
@@ -334,7 +342,6 @@ function delayToDo(event){
     delayId = tr.id
     delayCurState = event.currentTarget
     
-    console.log(delayCurState)
     delayDate.value = `${String(TODOS_KEY.getFullYear())}-${String(TODOS_KEY.getMonth()+1).padStart(2, "0")}-${String(TODOS_KEY.getDate()).padStart(2, "0")}`
 }
 function appearState(event) {
